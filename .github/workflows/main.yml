@@ -1,0 +1,15 @@
+on: [push]
+
+jobs:
+  hello_world_job:
+    runs-on: ubuntu-latest
+    name: A job to see action
+    steps:
+    - name: action
+      id: actionOutput
+      uses: actions/MyActionTest@v1.1
+      with:
+        who-to-greet: 'Kitty Jose'
+    # Use the output from the `hello` step
+    - name: Get the output action
+      run: echo "The payload was ${{ steps.actionOutput.outputs.payloadOp }}"
